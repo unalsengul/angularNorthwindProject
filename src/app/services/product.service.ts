@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 import { ListResponseModel } from '../models/ListResponseModel';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
+import { ResponseModel } from '../models/responseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +26,11 @@ export class ProductService {
     let newPath=this.apiUrl+"Products/getbycategory?categoryId="+categoryId
     return this.httpClient.get<ListResponseModel<Product>>(newPath);
     //dönüş tipi  : Observable , veri tipi:ProductResponseModel olacak şekilde çalışır.
+   }
+
+   add(product:Product):Observable<ResponseModel>
+   {
+     return this.httpClient.post<ResponseModel>(this.apiUrl+"products/add",product);
    }
 
 }

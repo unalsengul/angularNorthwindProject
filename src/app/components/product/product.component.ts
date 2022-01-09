@@ -60,7 +60,7 @@ export class ProductComponent implements OnInit {
   {
     if(product.productId===1)
     {
-      this.toastrService.error("Bu ürün eklenemez","Hata")
+      this.toastrService.error("Bu ürün eklenemez","Hata");
     }
     else
     {
